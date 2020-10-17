@@ -1,0 +1,98 @@
+# Order
+1. Find all subjects sorted by subject
+-\d subjects
+- SELECT * FROM subjects;
+-SELECT subject FROM subjects GROUP BY subject;
+
+2. Find all subjects sorted by location
+-\d subjects
+- SELECT * FROM subjects;
+-SELECT location FROM subjects GROUP BY location;
+
+# Where
+3. Find the book "Little Women"
+- SELECT * FROM books;
+- SELECT * FROM books WHERE title='Little Women';
+
+4.Find all books containing the word "Python"
+- SELECT * FROM books WHERE title='Python';
+
+5.Find all subjects with the location "Main St" sort them by subject
+- SELECT subject FROM subjects WHERE location='Main St';
+
+
+# Joins
+6. Find all books about Computers and list ONLY the book titles
+-SELECT * FROM books;
+-SELECT title FROM books WHERE title IN ('Practical PostgreSQL', 'Learning Python', 'Programming Python');
+
+7. Find all books and display a result table with ONLY the following columns
+
+Book title
+Author's first name
+Author's last name
+-SELECT title FROM books GROUP BY title;
+-SELECT b.title, a.first_name, a.last_name
+-FROM books b FULL JOIN authors a
+-ON b.id=a.id;
+-SELECT * FROM authors;
+-SELECT * first_name FROM authors GROUP BY first_name;
+
+Book subject
+I couldn't get to join the fourth column to the display table
+
+8.Find all books that are listed in the stock table
+Sort them by retail price (most expensive first)
+-SELECT retail FROM stock ORDER BY retail DESC;
+
+Display ONLY: title and price
+-SELECT books.title, stock.retail FROM stock
+-FULL JOIN books
+-ON stock.retail=books.id;
+
+9. Find the book "Dune" and display ONLY the following columns
+Book title
+-SELECT title FROM books WHERE title='Dune';
+
+ISBN number
+-SELECT isbn FROM stock;
+
+Publisher name
+-SELECT name FROM publishers;
+
+Retail price
+-SELECT retail FROM stock;
+
+
+10.Find all shipments sorted by ship date display a result table with ONLY the following columns:
+-SELECT shipments.ship_date, customers.first_name, customers.last_name
+-FROM shipments FULL JOIN customers
+-ON shipments.id=customers.id;
+I couldn't get to join the fourth column to the display table
+
+Customer first name
+Customer last name
+ship date
+book title
+
+
+#GROUPING AND COUNTING
+
+11.Get the COUNT of all books
+-SELECT COUNT(*) FROM books;
+
+12.Get the COUNT of all Locations
+-SELECT COUNT(location) FROM subjects;
+
+13.Get the COUNT of each unique location in the subjects table. 
+Display the count and the location name. (hint: requires GROUP BY).
+
+-SELECT location, COUNT(location) FROM subjects GROUP BY location;
+
+
+14.List all books. Display the book_id, title, 
+and a count of how many editions each book has. (hint: requires GROUP BY and JOIN)
+
+-SELECT edition, books.title, editions.book_id, COUNT(edition) FROM editions GROUP BY edition;
+-
+
