@@ -96,3 +96,16 @@ and a count of how many editions each book has. (hint: requires GROUP BY and JOI
 -SELECT edition, books.title, editions.book_id, COUNT(edition) FROM editions GROUP BY edition;
 -
 
+
+
+
+
+Please describe your comfort and completeness levels before submitting.
+
+Comfort Level (1-5): 
+4
+Completeness Level (1-5):
+4
+What did you think of this deliverable?:
+I like it. It was something different to what we been doing.
+I had a hard time with joining multiple columns(3 or more)
